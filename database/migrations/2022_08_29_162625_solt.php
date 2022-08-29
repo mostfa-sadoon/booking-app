@@ -14,13 +14,11 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('vehicles', function (Blueprint $table) {
+        Schema::create('slots', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('vehicle_kind_id');
-            $table->foreign('vehicle_kind_id')->references('id')->on('vehicle_kinds')->onDelete('cascade');
-            $table->integer('slots');
-            $table->string('name');
-            $table->integer('vehiclenumber');
+            $table->unsignedBigInteger('vehicle_id');
+            $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');
+            $table->integer('number');
             $table->timestamps();
         });
     }

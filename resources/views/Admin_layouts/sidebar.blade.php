@@ -8,10 +8,19 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
 
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">{{ trans('admin.categories')}}</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">manage vehicle</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href=""></a></li>
+                                <li><a href="{{route('vehiclekinds.index')}}">vehicle Kinds</a></li>
                             </ul>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{route('vehicls.index')}}">vehicles</a></li>
+                            </ul>
+                        </li>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">manage travel</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{route('travels.index')}}">travels</a></li>
+                            </ul>
+
                         </li>
 
                     </ul>

@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthController;
-
+use App\Http\Controllers\Admin\vehicle\vehicleKindController;
+use App\Http\Controllers\Admin\vehicle\vehicleController;
+use App\Http\Controllers\Admin\travel\travelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,5 +18,10 @@ use App\Http\Controllers\Admin\Auth\AuthController;
 Route::controller(AuthController::class)->group(function () {
     Route::get('/Admin/login','login');
     Route::Post('/Admin/login','Submitlogin')->name('Admin.login');
+});
+Route::middleware('AdminAuth')->group(function(){
+    Route::resource('vehiclekinds', vehicleKindController::class);
+    Route::resource('vehicls', vehicleController::class);
+    Route::resource('travels', travelController::class);
 });
 

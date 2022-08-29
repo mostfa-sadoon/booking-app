@@ -14,16 +14,15 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('travels', function (Blueprint $table) {
+        Schema::create('travelslots', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('vehicle_id');
             $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');
-            $table->integer('slots')->nullable();
-            $table->integer('price');
-            $table->string('from');
-            $table->string('to');
-            $table->datetime('start_date');
-            $table->datetime('end_date');
+            $table->unsignedBigInteger('slots_id');
+            $table->foreign('slots_id')->references('id')->on('slots')->onDelete('cascade');
+            $table->unsignedBigInteger('travel_id');
+            $table->foreign('travel_id')->references('id')->on('travels')->onDelete('cascade');
+            $table->enum('status', ['true', 'false']);
             $table->timestamps();
         });
     }
