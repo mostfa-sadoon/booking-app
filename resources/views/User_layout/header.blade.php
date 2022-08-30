@@ -24,7 +24,12 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+            <form action="{{route('user.signout')}}" method="post">
+                @csrf
+                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                <input type="submit" class="btn" value="logout">
+            </form>
+
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use Redirect;
+use Session;
 class AuthController extends Controller
 {
     // login view
@@ -22,5 +23,10 @@ class AuthController extends Controller
         	return redirect(Redirect::intended()->getTargetUrl());
         }
         return redirect()->route('user.login');
+    }
+    public function signout(Request $request){
+        Session::flush();
+        Auth::guard('web')->logout();
+        return redirect()->route('login');
     }
 }

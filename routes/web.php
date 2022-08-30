@@ -22,7 +22,7 @@ Route::controller(BookingController::class)->group(function () {
 // login
 Route::get('/login',[AuthController::class,'index'])->name('login');
 Route::post('/submit/login',[AuthController::class,'login'])->name('user.submit.login');
-
+Route::post('signout/user', [AuthController::class, 'signout'])->name('user.signout');
 
  Route::middleware('auth')->group(function(){
      Route::controller(BookingController::class)->group(function () {
