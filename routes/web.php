@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\BookingController;
+use App\Http\Controllers\User\Auth\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/',[HomeController::class,'index']);
+Route::controller(BookingController::class)->group(function () {
+    Route::get('/booking/show/travel/{id}','show')->name('travel.show');
 });
+// login
+Route::get('/login',[AuthController::class,'index'])->name('login');
+Route::post('/submit/login',[AuthController::class,'login'])->name('user.submit.login');
+
+
+ Route::middleware('auth')->group(function(){
+     Route::controller(BookingController::class)->group(function () {
+      Route::get('/booking/slot/travel/{id}','booking')->name('booking.slot');
+      Route::get('/cancelbooking/slot/travel/{id}','cancelbooking')->name('cancel.booking');
+     });
+ });

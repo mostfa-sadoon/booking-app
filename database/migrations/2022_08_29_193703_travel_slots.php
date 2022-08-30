@@ -22,7 +22,9 @@ return new class extends Migration
             $table->foreign('slots_id')->references('id')->on('slots')->onDelete('cascade');
             $table->unsignedBigInteger('travel_id');
             $table->foreign('travel_id')->references('id')->on('travels')->onDelete('cascade');
-            $table->enum('status', ['true', 'false']);
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->enum('status', ['available', 'unavailable']);
             $table->timestamps();
         });
     }

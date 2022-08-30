@@ -9,5 +9,8 @@ class travelslot extends Model
 {
     use HasFactory;
     protected $guarded = [];
-
+    public function slotsrelation()
+    {
+        return $this->belongsTo(slot::class,'slots_id');
+    }
 }

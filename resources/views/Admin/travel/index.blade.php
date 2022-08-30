@@ -96,7 +96,7 @@
             <th scope="row">{{$key+1}}</th>
             <td>{{$travel->from}}</td>
             <td>{{$travel->to}}</td>
-            <td>{{$travel->vehicle->name}}</td>
+            <td></td>
             <td>{{$travel->slots}}</td>
             <td></td>
             <td>{{$travel->start_date}}</td>
@@ -107,8 +107,6 @@
             </td>
           </tr>
         @endforeach
-
-
     </tbody>
   </table>
 

@@ -14,4 +14,7 @@ class travel extends Model
     {
         return $this->belongsTo(vehicle::class,'vehicle_id');
     }
+    public function travelslots(){
+        return $this->hasMany(travelslot::class);
+    }
 }
