@@ -37,8 +37,6 @@
              <p>{{$slot->slotsrelation->number}}</p>
              @if ($slot->status=="available" && $userslot==null)
                 <a href="{{route('booking.slot',$slot->id)}}" class="btn btn-primary">book</a>
-             @else
-                   <p>this solt token</p>
              @endif
 
             @auth
