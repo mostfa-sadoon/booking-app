@@ -13,13 +13,16 @@ class BookingController extends Controller
     //
     public function show($id){
           $travel=travel::with('travelslots.slotsrelation')->find($id);
-          $userslot=travelslot::where('user_id','=',Auth::user()->id)->first();
+          $userslot=null;
+          if(Auth::user()){
+            $userslot=travelslot::where('user_id','=',Auth::user()->id)->first();
+          }
           return view('User.booking.index',compact('travel','userslot'));
     }
     public function booking($id){
         $userslot=travelslot::where('user_id','=',Auth::user()->id)->first();
-        if($userslot==null){
-            $slot=travelslot::find($id);
+        $slot=travelslot::find($id);
+        if($userslot==null){    
             $slot->update([
                 'status'=>'unavailable',
                 'user_id'=>Auth::user()->id,

@@ -22,7 +22,7 @@ class AuthController extends Controller
         if (Auth::guard('web')->attempt($credentials)) {
         	return redirect(Redirect::intended()->getTargetUrl());
         }
-        return redirect()->route('user.login');
+        return redirect()->route('login');
     }
     public function signout(Request $request){
         Session::flush();

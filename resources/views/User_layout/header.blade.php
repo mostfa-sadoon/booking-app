@@ -24,12 +24,13 @@
           </div>
         </li>
         <li class="nav-item">
-            <form action="{{route('user.signout')}}" method="post">
-                @csrf
-                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                <input type="submit" class="btn" value="logout">
-            </form>
-
+            @auth
+                <form action="{{route('user.signout')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                    <input type="submit" class="btn" value="logout">
+                </form>
+            @endauth
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
