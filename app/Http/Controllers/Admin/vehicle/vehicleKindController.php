@@ -10,7 +10,7 @@ class vehicleKindController extends Controller
 {
     //
     public function index(){
-        $vehicleKinds=vehicleKind::get();
+        $vehicleKinds=vehicleKind::whereYear()->get();
         return view('Admin.vehiclekinds.index',compact('vehicleKinds'));
     }
     public function store(Request $request){
